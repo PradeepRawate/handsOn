@@ -1,11 +1,9 @@
 //Java program to implement solution of producer
 //consumer problem.
 import java.util.LinkedList;
-
 public class ProducerConsumer
 {
-	public static void main(String[] args)
-						throws InterruptedException
+	public static void main(String[] args) throws InterruptedException
 	{
 		// Object of a class that has both produce()
 		// and consume() methods
@@ -13,27 +11,23 @@ public class ProducerConsumer
 
 		// Create producer thread
 		Thread t1 = new Thread(() -> {
-				try
-				{
-					pc.produce();
-				}
-				catch(InterruptedException e)
-				{
-					e.printStackTrace();
-				}
-			});
+			try{
+				pc.produce();
+			}
+			catch(InterruptedException e){
+				e.printStackTrace();
+			}
+		});
 
 		// Create consumer thread
 		Thread t2 = new Thread(() -> {
-				try
-				{
-					pc.consume();
-				}
-				catch(InterruptedException e)
-				{
-					e.printStackTrace();
-				}
-			});
+			try{
+				pc.consume();
+			}
+			catch(InterruptedException e){
+				e.printStackTrace();
+			}
+		});
 
 		// Start both threads
 		t1.start();
@@ -65,7 +59,6 @@ public class ProducerConsumer
 					// is full
 					while (list.size()==capacity)
 						wait();
-
 					System.out.println("Producer produced-"
 												+ value);
 
